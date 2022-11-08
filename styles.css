@@ -1,3 +1,6 @@
+:root {
+    --gray: #cacdd3;
+}
 .container {
     min-height: 100vh;
     display: grid;
@@ -11,12 +14,15 @@ h1 {
 }
 .form-heading {
     border-style: groove;
+    background: var(--gray);
 }
 .books-heading {
     border-style: groove;
+    background: var(--gray);
 }
 .form {
     border-style: groove;
+    background: var(--gray);
 }
 .books {
     background-color: blanchedalmond;
