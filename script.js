@@ -39,20 +39,23 @@ function displayBooks() {
             card.remove();
             displayBooks();
         }
-        const readStatusBtn = document.createElement("button");
-        readStatusBtn.classList.add("readstatusbtn");
-        readStatusBtn.textContent = ("Toggle Read Status");
-        readStatusBtn.textContent.linkedArray = index;
-        card.appendChild(readStatusBtn);
-        readStatusBtn.addEventListener("click", toggleReadStatus);
+
+        const readStatusButton = document.createElement("button");
+        readStatusButton.classList.add("readstatusbtn");
+        readStatusButton.textContent = "Toggle Read Status";
+        readStatusButton.dataset.linkedArray = index;
+        card.appendChild(readStatusButton);
+        readStatusButton.addEventListener("click", toggleReadStatus);
+
         function toggleReadStatus() {
-            let retrieveBookToToggle = readStatusBtn.textContent.linkedArray = index;
+            let retrieveBookToToggle = readStatusButton.dataset.linkedArray;
             Book.prototype = Object.create(Book.prototype);
-            const toggleBook = new Book;
-            if (myLibrary[parseInt(retrieveBookToToggle).Read == "Yes"]) {
+            const toggleBook = new Book();
+            
+            if (myLibrary[parseInt(retrieveBookToToggle)].Read == "Yes") {
                 toggleBook.Read = "No";
                 myLibrary[parseInt(retrieveBookToToggle)].Read = toggleBook.Read;
-            } else if ((myLibrary[parseInt(retrieveBookToToggle)].Read) == "No") {
+            } else if (myLibrary[parseInt(retrieveBookToToggle)].Read == "No") {
                 toggleBook.Read = "Yes";
                 myLibrary[parseInt(retrieveBookToToggle)].Read = toggleBook.Read;
             }
@@ -65,8 +68,9 @@ function displayBooks() {
             para.textContent = (`${key}: ${myLibrarys[key]}`);
             card.appendChild(para); 
         }
-    index++;
-    })
+
+        index++;
+    });
 }
 const addBookButton = document.querySelector(".addbookbtn");
 addBookButton.addEventListener("click", displayForm);
