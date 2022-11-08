@@ -19,15 +19,31 @@ function displayBooks() {
     for (let i = 0; i < removeDivs.length; i++) {
         removeDivs[i].remove();
     }
-    
-    myLibrary.forEach(myLibrary => {
+    let index = 0;
+    myLibrary.forEach(myLibrarys => {
         const card = document.createElement("div");
         card.classList.add("card");
         books.appendChild(card);
-        for (let key in myLibrary) {
-            console.log(`${key}: ${myLibrary[key]}`);
+        
+        const removeBookBtn = document.createElement("button");
+        removeBookBtn.classList.add("removebookbtn");
+        removeBookBtn.textContent = ("Remove From Library")
+        removeBookBtn.dataset.linkedArray = index;
+        index++;
+        card.appendChild(removeBookBtn);
+        removeBookBtn.addEventListener("click", removeBook);
+
+        function removeBook() {
+            let bookToRemove = removeBookBtn.dataset.linkedArray;
+            myLibrary.splice(parseInt(bookToRemove), 1);
+            card.remove();
+            displayBooks();
+        }
+
+        for (let key in myLibrarys) {
+            console.log(`${key}: ${myLibrarys[key]}`);
             const para = document.createElement("p");
-            para.textContent = (`${key}: ${myLibrary[key]}`);
+            para.textContent = (`${key}: ${myLibrarys[key]}`);
             card.appendChild(para); 
         }
     })
