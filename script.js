@@ -10,10 +10,16 @@ function Book(Title, Author, Pages, Read) {
 function addBookToLibrary(Title, Author, Pages,  Read) {
     let book = new Book(Title, Author, Pages, Read);
     myLibrary.push(book);
+    displayBooks();
 }
 
 function displayBooks() {
-    const books = document.querySelector(".books")
+    const books = document.querySelector(".books");
+    const removeDivs = document.querySelectorAll(".card");
+    for (let i = 0; i < removeDivs.length; i++) {
+        removeDivs[i].remove();
+    }
+    
     myLibrary.forEach(myLibrary => {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -26,10 +32,29 @@ function displayBooks() {
         }
     })
 }
-addBookToLibrary('Book1', 'Author1', "298 Pages", "Read");
-addBookToLibrary('Book2', 'Author2', "172 Pages", "Not Read Yet");
-addBookToLibrary('Book3', 'Author3', "512 Pages", "Read");
-addBookToLibrary('Book4', 'Author4', "467 Pages", "Read");
+const addBookButton = document.querySelector(".addbookbtn");
+addBookButton.addEventListener("click", displayForm);
 
-console.log("End of array", myLibrary);
-displayBooks();
+function displayForm() {
+    document.getElementById("bookform").style.display = "";
+}
+const submitButton = document.querySelector(".submitbtn");
+submitButton.addEventListener("click", intakeFormData);
+
+function intakeFormData() {
+    let Title = document.getElementById("Title").value;
+    let Author = document.getElementById("Author").value;
+    let Pages = document.getElementById("Pages").value;
+    let Read = document.getElementById("Read").value;
+    if (Title == "" || Author == "" || Pages == "" || Read == "") {
+        return;
+    }
+    addBookToLibrary(Title, Author, Pages,  Read);
+    document.getElementById("add-book").reset();
+}
+const clearButton = document.querySelector(".resetbtn");
+clearButton.addEventListener("click", clearForm);
+
+function clearForm() {
+    document.getElementById("add-book").reset();
+}
