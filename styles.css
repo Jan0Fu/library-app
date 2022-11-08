@@ -40,3 +40,24 @@ h1 {
     text-align: center;
     display: grid;
 }
+#add-book {
+    display: grid;
+    grid-template-columns: .1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+.resetbtn {
+    margin-left: 20px;
+}
+.submitbtn, .resetbtn {
+    border-radius: 10px;
+    padding: 5px;
+   
+}
+.addbookbtn {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
