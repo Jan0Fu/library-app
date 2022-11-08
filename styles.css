@@ -67,3 +67,9 @@ h1 {
     background-color: red;
     border-radius: 10PX;
 }
+.readstatusbtn {
+    grid-row: 6 / 7;
+    font-weight: 900;
+    background-color: aquamarine;
+    border-radius: 10px;
+}

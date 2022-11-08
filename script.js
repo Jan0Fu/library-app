@@ -39,6 +39,25 @@ function displayBooks() {
             card.remove();
             displayBooks();
         }
+        const readStatusBtn = document.createElement("button");
+        readStatusBtn.classList.add("readstatusbtn");
+        readStatusBtn.textContent = ("Toggle Read Status");
+        readStatusBtn.textContent.linkedArray = index;
+        card.appendChild(readStatusBtn);
+        readStatusBtn.addEventListener("click", toggleReadStatus);
+        function toggleReadStatus() {
+            let retrieveBookToToggle = readStatusBtn.textContent.linkedArray = index;
+            Book.prototype = Object.create(Book.prototype);
+            const toggleBook = new Book;
+            if (myLibrary[parseInt(retrieveBookToToggle).Read == "Yes"]) {
+                toggleBook.Read = "No";
+                myLibrary[parseInt(retrieveBookToToggle)].Read = toggleBook.Read;
+            } else if ((myLibrary[parseInt(retrieveBookToToggle)].Read) == "No") {
+                toggleBook.Read = "Yes";
+                myLibrary[parseInt(retrieveBookToToggle)].Read = toggleBook.Read;
+            }
+            displayBooks();
+        }
 
         for (let key in myLibrarys) {
             console.log(`${key}: ${myLibrarys[key]}`);
@@ -46,6 +65,7 @@ function displayBooks() {
             para.textContent = (`${key}: ${myLibrarys[key]}`);
             card.appendChild(para); 
         }
+    index++;
     })
 }
 const addBookButton = document.querySelector(".addbookbtn");
